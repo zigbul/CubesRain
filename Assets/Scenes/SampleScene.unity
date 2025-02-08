@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 207312928}
   - component: {fileID: 207312927}
   - component: {fileID: 207312926}
+  - component: {fileID: 207312930}
   m_Layer: 0
   m_Name: MiniPlatform
   m_TagString: Platform
@@ -229,6 +230,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25}
+--- !u!114 &207312930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207312925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9805b9e4368bd46b1678f22a76a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591935653
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +254,7 @@ GameObject:
   - component: {fileID: 591935656}
   - component: {fileID: 591935655}
   - component: {fileID: 591935654}
+  - component: {fileID: 591935658}
   m_Layer: 0
   m_Name: MiniPlatform
   m_TagString: Platform
@@ -335,6 +349,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -25}
+--- !u!114 &591935658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591935653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9805b9e4368bd46b1678f22a76a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0012f5fa3184794797ddfcf28290519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePrefab: {fileID: 1511610188954177775, guid: 81b6fbb76ef3631408bb05a0f9a62612, type: 3}
+  _cubePrefab: {fileID: -6293946926659239247, guid: 81b6fbb76ef3631408bb05a0f9a62612, type: 3}
   _poolSize: 20
 --- !u!1 &963194225
 GameObject:
@@ -579,6 +605,7 @@ GameObject:
   - component: {fileID: 1701887588}
   - component: {fileID: 1701887587}
   - component: {fileID: 1701887586}
+  - component: {fileID: 1701887590}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -673,6 +700,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1701887590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701887585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9805b9e4368bd46b1678f22a76a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1746840592
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +724,7 @@ GameObject:
   - component: {fileID: 1746840595}
   - component: {fileID: 1746840594}
   - component: {fileID: 1746840593}
+  - component: {fileID: 1746840597}
   m_Layer: 0
   m_Name: MiniPlatform
   m_TagString: Platform
@@ -779,6 +819,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+--- !u!114 &1746840597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746840592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9805b9e4368bd46b1678f22a76a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1849126975
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +843,7 @@ GameObject:
   - component: {fileID: 1849126978}
   - component: {fileID: 1849126977}
   - component: {fileID: 1849126976}
+  - component: {fileID: 1849126980}
   m_Layer: 0
   m_Name: MiniPlatform
   m_TagString: Platform
@@ -885,6 +938,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -25, y: 0, z: 0}
+--- !u!114 &1849126980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849126975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9805b9e4368bd46b1678f22a76a84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1891616032
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +998,6 @@ MonoBehaviour:
   _spawnRangeX: 6
   _spawnRangeZ: 6
   _spawnHeight: 10
-  _startingTime: 0
   _spawnInterval: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

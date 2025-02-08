@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
-public class CubeBehavior : MonoBehaviour
+public class CubeBehavior : MonoBehaviour, IPoolable
 {
     [SerializeField] private float _minLifeTime = 2f;
     [SerializeField] private float _maxLifeTime = 5f;
@@ -8,18 +9,16 @@ public class CubeBehavior : MonoBehaviour
 
     private bool _hasTouchedPlatform = false;
     private Renderer _renderer;
-    private string _collisionObjectTag = "Platform";
     private CubePool _cubePool;
 
-    private void Start()
+    private void Awake()
     {
         _renderer = GetComponent<Renderer>();
-        _cubePool = FindObjectOfType<CubePool>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!_hasTouchedPlatform && collision.gameObject.CompareTag(_collisionObjectTag))
+        if (!_hasTouchedPlatform && collision.gameObject.TryGetComponent<Platform>(out _))
         {
             _hasTouchedPlatform = true;
 
@@ -27,8 +26,15 @@ public class CubeBehavior : MonoBehaviour
 
             float lifeTime = Random.Range(_minLifeTime, _maxLifeTime);
 
-            Invoke(nameof(ReturnToPool), lifeTime);
+            StartCoroutine(WaitAndReturn(lifeTime));
         }
+    }
+
+    private IEnumerator WaitAndReturn(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        ReturnToPool();
     }
 
     private Color GetRandomColor()
@@ -36,10 +42,15 @@ public class CubeBehavior : MonoBehaviour
         return new Color(Random.value, Random.value, Random.value);
     }
 
-    private void ReturnToPool()
+    public void ReturnToPool()
     {
         _hasTouchedPlatform = false;
         _renderer.material.color = _defaultColor;
-        _cubePool.ReturnCube(gameObject);
+        _cubePool.ReturnCube(this);
+    }
+
+    public void SetPool(CubePool pool)
+    {
+        _cubePool = pool;
     }
 }
