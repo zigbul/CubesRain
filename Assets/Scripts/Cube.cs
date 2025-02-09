@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class CubeBehavior : MonoBehaviour, IPoolable
+public class Cube : MonoBehaviour, IPoolable
 {
     [SerializeField] private float _minLifeTime = 2f;
     [SerializeField] private float _maxLifeTime = 5f;
@@ -9,7 +10,8 @@ public class CubeBehavior : MonoBehaviour, IPoolable
 
     private bool _hasTouchedPlatform = false;
     private Renderer _renderer;
-    private CubePool _cubePool;
+    private WaitForSeconds _delay;
+    private UnityAction<GameObject> _onReturnToPool;
 
     private void Awake()
     {
@@ -18,21 +20,22 @@ public class CubeBehavior : MonoBehaviour, IPoolable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!_hasTouchedPlatform && collision.gameObject.TryGetComponent<Platform>(out _))
+        if (_hasTouchedPlatform == false && collision.gameObject.TryGetComponent<Platform>(out _))
         {
             _hasTouchedPlatform = true;
 
             _renderer.material.color = GetRandomColor();
 
             float lifeTime = Random.Range(_minLifeTime, _maxLifeTime);
+            _delay = new WaitForSeconds(lifeTime);
 
-            StartCoroutine(WaitAndReturn(lifeTime));
+            StartCoroutine(WaitAndReturn());
         }
     }
 
-    private IEnumerator WaitAndReturn(float delay)
+    private IEnumerator WaitAndReturn()
     {
-        yield return new WaitForSeconds(delay);
+        yield return _delay;
 
         ReturnToPool();
     }
@@ -42,15 +45,15 @@ public class CubeBehavior : MonoBehaviour, IPoolable
         return new Color(Random.value, Random.value, Random.value);
     }
 
+    public void SetReturnAction(UnityAction<GameObject> returnAction)
+    {
+        _onReturnToPool = returnAction;
+    }
+
     public void ReturnToPool()
     {
         _hasTouchedPlatform = false;
         _renderer.material.color = _defaultColor;
-        _cubePool.ReturnCube(this);
-    }
-
-    public void SetPool(CubePool pool)
-    {
-        _cubePool = pool;
+        _onReturnToPool?.Invoke(gameObject);
     }
 }

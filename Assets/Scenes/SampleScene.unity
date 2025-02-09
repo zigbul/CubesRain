@@ -455,52 +455,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &831036207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 831036208}
-  - component: {fileID: 831036209}
-  m_Layer: 0
-  m_Name: Pool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &831036208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831036207}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &831036209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831036207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0012f5fa3184794797ddfcf28290519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cubePrefab: {fileID: -6293946926659239247, guid: 81b6fbb76ef3631408bb05a0f9a62612, type: 3}
-  _poolSize: 20
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,11 +948,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19910b1bfb2e80846afd60d9f66eff65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePool: {fileID: 831036209}
+  _cube: {fileID: 1511610188954177775, guid: 81b6fbb76ef3631408bb05a0f9a62612, type: 3}
   _spawnRangeX: 6
   _spawnRangeZ: 6
   _spawnHeight: 10
   _spawnInterval: 0.5
+  _poolCapacity: 10
+  _poolMaxSize: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1011,4 +967,3 @@ SceneRoots:
   - {fileID: 207312929}
   - {fileID: 591935657}
   - {fileID: 1891616034}
-  - {fileID: 831036208}
