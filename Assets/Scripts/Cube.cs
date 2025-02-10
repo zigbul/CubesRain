@@ -2,7 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Cube : MonoBehaviour, IPoolable
+[RequireComponent(typeof(Renderer))]
+
+public class Cube : MonoBehaviour
 {
     [SerializeField] private float _minLifeTime = 2f;
     [SerializeField] private float _maxLifeTime = 5f;
@@ -11,7 +13,8 @@ public class Cube : MonoBehaviour, IPoolable
     private bool _hasTouchedPlatform = false;
     private Renderer _renderer;
     private WaitForSeconds _delay;
-    private UnityAction<GameObject> _onReturnToPool;
+
+    public event System.Action<Cube> OnReturnToPool;
 
     private void Awake()
     {
@@ -29,11 +32,11 @@ public class Cube : MonoBehaviour, IPoolable
             float lifeTime = Random.Range(_minLifeTime, _maxLifeTime);
             _delay = new WaitForSeconds(lifeTime);
 
-            StartCoroutine(WaitAndReturn());
+            StartCoroutine(DelayReturnToPool());
         }
     }
 
-    private IEnumerator WaitAndReturn()
+    private IEnumerator DelayReturnToPool()
     {
         yield return _delay;
 
@@ -45,15 +48,10 @@ public class Cube : MonoBehaviour, IPoolable
         return new Color(Random.value, Random.value, Random.value);
     }
 
-    public void SetReturnAction(UnityAction<GameObject> returnAction)
-    {
-        _onReturnToPool = returnAction;
-    }
-
-    public void ReturnToPool()
+    private void ReturnToPool()
     {
         _hasTouchedPlatform = false;
         _renderer.material.color = _defaultColor;
-        _onReturnToPool?.Invoke(gameObject);
+        OnReturnToPool?.Invoke(this);
     }
 }

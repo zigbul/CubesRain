@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19910b1bfb2e80846afd60d9f66eff65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cube: {fileID: 1511610188954177775, guid: 81b6fbb76ef3631408bb05a0f9a62612, type: 3}
+  _cube: {fileID: -6293946926659239247, guid: 81b6fbb76ef3631408bb05a0f9a62612, type: 3}
   _spawnRangeX: 6
   _spawnRangeZ: 6
   _spawnHeight: 10
